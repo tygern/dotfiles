@@ -13,7 +13,9 @@ PS1="$GREEN\u$NO_COLOR@$RED\\h $YELLOW\D{%F %T}
 in: $NO_COLOR\w $YELLOW\$(parse_git_branch)$NO_COLOR\$: "
 
 jdk() {
-        version=$1
-        export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
-        java -version
- }
+  version=$1
+  export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+  java -version
+}
+
+jdk 1.8 > /dev/null 2>&1
