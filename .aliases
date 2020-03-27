@@ -1,7 +1,1 @@
-alias gpr='git pull --rebase'
-alias gs='git status'
-alias ga='git add'
-alias ll='ls -al'
-alias reload='source ~/.bash_profile'
-alias gw='./gradlew'
-alias g='git'
+
