@@ -1,8 +1,0 @@
-[alias]
-	s = status
-	co = checkout
-	c = commit
-	lola = log --graph --decorate --oneline --all
-	lg = log --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short
-	a = add
-        clean-tags = fetch --prune origin "+refs/tags/*:refs/tags/*"
