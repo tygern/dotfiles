@@ -19,3 +19,5 @@ jdk() {
 }
 
 jdk 1.8 > /dev/null 2>&1
+
+export BASH_SILENCE_DEPRECATION_WARNING=1
