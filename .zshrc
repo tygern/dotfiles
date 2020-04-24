@@ -1,13 +1,15 @@
 source ~/.aliases
 
-function git_branch() {
-    branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
-    if [[ $branch == "" ]]; then
-        :
-    else
-        echo '%F{blue}('$branch')%f'
-    fi
-}
+autoload -Uz compinit && compinit -i
+
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' formats '%F{magenta}[%b]%f'
+zstyle ':vcs_info:*' actionformats '%F{magenta}[%b]%f %F{red}(%a)%f' 
+
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+setopt prompt_subst
 
 NEWLINE=$'\n'
 USER="%F{green}%n%f"
@@ -15,8 +17,7 @@ HOSTNAME="%F{red}%m%f"
 DATETIME="%F{blue}20%D %*%f"
 LOCATION=%~
 
-setopt prompt_subst
-PROMPT='${USER}@${HOSTNAME} ${DATETIME}${NEWLINE} ${LOCATION} $(git_branch)$: '
+PROMPT='${USER}@${HOSTNAME} ${DATETIME} $vcs_info_msg_0_${NEWLINE} ${LOCATION} $: '
 
 jdk() {
   version=$1
@@ -25,4 +26,3 @@ jdk() {
 }
 
 jdk 1.8 > /dev/null 2>&1
-
