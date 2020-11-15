@@ -12,12 +12,12 @@ precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
 
 NEWLINE=$'\n'
-USER="%F{green}%n%f"
+USERNAME="%F{green}%n%f"
 HOSTNAME="%F{red}%m%f"
 DATETIME="%F{blue}20%D %*%f"
 LOCATION=%~
 
-PROMPT='${USER}@${HOSTNAME} ${DATETIME} $vcs_info_msg_0_${NEWLINE} ${LOCATION} $: '
+PROMPT='${USERNAME}@${HOSTNAME} ${DATETIME} $vcs_info_msg_0_${NEWLINE} ${LOCATION} $: '
 
 jdk() {
   version=$1
