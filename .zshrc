@@ -1,5 +1,3 @@
-source ~/.aliases
-
 autoload -Uz compinit && compinit -i
 
 autoload -Uz vcs_info
@@ -29,4 +27,4 @@ jdk() {
   java -version
 }
 
-jdk 20 > /dev/null 2>&1
+jdk 23 > /dev/null 2>&1
