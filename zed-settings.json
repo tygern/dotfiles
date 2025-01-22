@@ -8,5 +8,9 @@
     }
   },
   "format_on_save": "off",
-  "soft_wrap": "none"
+  "soft_wrap": "none",
+  "telemetry": {
+    "metrics": false,
+    "diagnostics": false
+  }
 }
