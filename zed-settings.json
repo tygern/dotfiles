@@ -1,0 +1,12 @@
+{
+  "theme": "One Light",
+  "base_keymap": "JetBrains",
+  "buffer_font_size": 15,
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 500
+    }
+  },
+  "format_on_save": "off",
+  "soft_wrap": "none"
+}
