@@ -17,10 +17,6 @@ LOCATION=%~
 
 PROMPT='${USERNAME}@${HOSTNAME} ${DATETIME} $vcs_info_msg_0_${NEWLINE} ${LOCATION} $: '
 
-action() {
-  gh run watch $1 && osascript -e 'display notification "Your build is done" with title "Finished!"' && say 'Your build is done'
-}
-
 jdk() {
   version=$1
   export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
