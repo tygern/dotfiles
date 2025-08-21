@@ -2,8 +2,9 @@ autoload -Uz compinit && compinit -i
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' formats '%F{magenta}[%b]%f'
-zstyle ':vcs_info:*' actionformats '%F{magenta}[%b]%f %F{red}(%a)%f' 
+zstyle ':vcs_info:*' get-revision true
+zstyle ':vcs_info:*' formats '%F{magenta}[%b]%f %F{yellow}%7.7i%f'
+zstyle ':vcs_info:*' actionformats '%F{magenta}[%b]%f %F{yellow}%7.7i%f %F{red}(%a)%f' 
 
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
