@@ -30,7 +30,6 @@ The script will prompt for your password when needed.
 ## After running the script
 
 1. Log out and back in for all system preference changes to take effect
-1. Menu bar: show Sound (System Settings > Control Center)
 1. Keyboard: remove Cmd-Shift-A and Cmd-Shift-M shortcuts (System Settings > Keyboard > Keyboard Shortcuts)
 1. Finder: add Home and ~/workspace to sidebar, remove others
 1. Paste SSH public key (copied to clipboard by the script) into GitHub: https://github.com/settings/keys

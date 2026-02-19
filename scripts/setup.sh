@@ -87,6 +87,10 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 15
 # Sound: disable UI sound effects
 defaults write com.apple.systemsound "com.apple.sound.uiaudio.enabled" -int 0
 
+# Menu bar: show Sound in Control Center
+defaults write com.apple.controlcenter "NSStatusItem Visible Sound" -bool true
+killall ControlCenter
+
 echo "Done. Some changes require logging out to take effect."
 
 # --- SSH key ---
@@ -105,8 +109,7 @@ cat <<'EOF'
 
   1. Sign in to work account
   2. Sign in to iCloud
-  3. Menu bar: show Sound (System Settings > Control Center)
-  5. Keyboard: remove Cmd-Shift-A and Cmd-Shift-M shortcuts
+  3. Keyboard: remove Cmd-Shift-A and Cmd-Shift-M shortcuts
      (System Settings > Keyboard > Keyboard Shortcuts)
   6. Finder: add Home and ~/workspace to sidebar, remove others
   7. Paste SSH public key (already in clipboard) into GitHub: https://github.com/settings/keys
