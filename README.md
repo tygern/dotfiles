@@ -14,7 +14,7 @@
    ```
 1. Clone this repo
    ```shell
-   mkdir -p ~/workspace/dotfiles
+   mkdir -p ~/workspace
    git clone https://github.com/tygern/dotfiles.git ~/workspace/dotfiles
    ```
 
