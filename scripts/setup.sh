@@ -60,6 +60,12 @@ step "Configuring system preferences"
 # Dock: auto-hide
 defaults write com.apple.dock autohide -bool true
 
+# Dock: remove all items, add Finder, Downloads, Trash
+dockutil --remove all --no-restart
+dockutil --add /System/Library/CoreServices/Finder.app --no-restart
+dockutil --add ~/Downloads --view fan --display folder --no-restart
+dockutil --add ~/.Trash
+
 # Dock: hot corners and quick corners (all off)
 defaults write com.apple.dock wvous-tl-corner -int 0
 defaults write com.apple.dock wvous-tr-corner -int 0
@@ -93,8 +99,7 @@ cat <<'EOF'
 
   1. Sign in to work account
   2. Sign in to iCloud
-  3. Dock: remove all icons except Finder, Downloads, Trash
-  4. Menu bar: show Sound (System Settings > Control Center)
+  3. Menu bar: show Sound (System Settings > Control Center)
   5. Keyboard: remove Cmd-Shift-A and Cmd-Shift-M shortcuts
      (System Settings > Keyboard > Keyboard Shortcuts)
   6. Finder: add Home and ~/workspace to sidebar, remove others

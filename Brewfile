@@ -1,3 +1,4 @@
+brew "dockutil"
 brew "git"
 brew "wget"
 brew "watch"
