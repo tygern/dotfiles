@@ -95,17 +95,6 @@ osascript -e 'tell application "Terminal" to set font size of settings set "Basi
 defaults write com.apple.controlcenter "NSStatusItem Visible Sound" -bool true
 killall ControlCenter
 
-step "Configuring Finder sidebar"
-mysides remove Recents
-mysides remove Shared
-mysides remove Documents
-if ! mysides list | grep -q "^$(whoami)"; then
-    mysides add "$(whoami)" "file:///Users/$(whoami)/"
-fi
-if ! mysides list | grep -q "^workspace"; then
-    mysides add workspace "file:///Users/$(whoami)/workspace/"
-fi
-
 # --- SSH key ---
 
 step "Generating SSH key"
@@ -122,14 +111,15 @@ cat <<'EOF'
   Remaining manual steps:
 ============================================
 
-  1. Keyboard: remove Cmd-Shift-A and Cmd-Shift-M shortcuts
+  1. Finder: add Home and ~/workspace to sidebar, remove Recents, Shared, and Documents
+  2. Keyboard: remove Cmd-Shift-A and Cmd-Shift-M shortcuts
      (System Settings > Keyboard > Keyboard Shortcuts)
-  2. Paste SSH public key (already in clipboard) into GitHub: https://github.com/settings/keys
-  3. JetBrains settings:
+  3. Paste SSH public key (already in clipboard) into GitHub: https://github.com/settings/keys
+  4. JetBrains settings:
        - Editor font size 15
        - Tab limit 4
        - Disable parameter name hints
        - Remove status bar and navigation bar
-  4. Log out for the system preferences changes to take effect
+  5. Log out for the system preferences changes to take effect
 
 EOF
