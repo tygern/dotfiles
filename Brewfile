@@ -1,4 +1,5 @@
 brew "dockutil"
+brew "mysides"
 brew "git"
 brew "wget"
 brew "watch"

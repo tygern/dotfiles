@@ -91,6 +91,13 @@ defaults write com.apple.systemsound "com.apple.sound.uiaudio.enabled" -int 0
 defaults write com.apple.controlcenter "NSStatusItem Visible Sound" -bool true
 killall ControlCenter
 
+# Finder sidebar
+mysides remove Recents
+mysides remove Shared
+mysides remove Documents
+mysides add "$(whoami)" "file:///Users/$(whoami)/"
+mysides add workspace "file:///Users/$(whoami)/workspace/"
+
 echo "Done. Some changes require logging out to take effect."
 
 # --- SSH key ---
@@ -111,9 +118,8 @@ cat <<'EOF'
   2. Sign in to iCloud
   3. Keyboard: remove Cmd-Shift-A and Cmd-Shift-M shortcuts
      (System Settings > Keyboard > Keyboard Shortcuts)
-  6. Finder: add Home and ~/workspace to sidebar, remove others
-  7. Paste SSH public key (already in clipboard) into GitHub: https://github.com/settings/keys
-  8. JetBrains settings:
+  4. Paste SSH public key (already in clipboard) into GitHub: https://github.com/settings/keys
+  5. JetBrains settings:
        - Editor font size 15
        - Tab limit 4
        - Disable parameter name hints
