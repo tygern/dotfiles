@@ -59,11 +59,9 @@ step "Configuring system preferences"
 # Dock: auto-hide
 defaults write com.apple.dock autohide -bool true
 
-# Dock: remove all items, add Finder, Downloads, Trash
+# Dock: remove all items except Finder and Trash, add Downloads
 dockutil --remove all --no-restart
-dockutil --add /System/Library/CoreServices/Finder.app --no-restart
 dockutil --add ~/Downloads --view fan --display folder --no-restart
-dockutil --add ~/.Trash
 
 # Dock: hot corners and quick corners (all off)
 defaults write com.apple.dock wvous-tl-corner -int 0
