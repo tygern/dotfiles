@@ -1,0 +1,13 @@
+brew "git"
+brew "wget"
+brew "watch"
+brew "tree"
+brew "jq"
+brew "tmux"
+
+cask "keepingyouawake"
+cask "jetbrains-toolbox"
+cask "rectangle"
+cask "1password"
+cask "zed"
+cask "docker"
