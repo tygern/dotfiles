@@ -119,7 +119,6 @@ cat <<'EOF'
        - Tab limit 4
        - Disable parameter name hints
        - Remove status bar and navigation bar
-
-  Some system preference changes require logging out to take effect.
+  4. Log out for the system preferences changes to take effect
 
 EOF
