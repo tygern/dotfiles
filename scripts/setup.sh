@@ -89,6 +89,12 @@ defaults write com.apple.systemsound "com.apple.sound.uiaudio.enabled" -int 0
 
 echo "Done. Some changes require logging out to take effect."
 
+# --- SSH key ---
+
+step "Generating SSH key"
+ssh-keygen -q -N "" -f ~/.ssh/id_rsa
+pbcopy < ~/.ssh/id_rsa.pub
+
 # --- Manual steps ---
 
 cat <<'EOF'
@@ -103,7 +109,7 @@ cat <<'EOF'
   5. Keyboard: remove Cmd-Shift-A and Cmd-Shift-M shortcuts
      (System Settings > Keyboard > Keyboard Shortcuts)
   6. Finder: add Home and ~/workspace to sidebar, remove others
-  7. Create GitHub SSH key: https://github.com/settings/keys
+  7. Paste SSH public key (already in clipboard) into GitHub: https://github.com/settings/keys
   8. JetBrains settings:
        - Editor font size 15
        - Tab limit 4
