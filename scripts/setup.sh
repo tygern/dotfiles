@@ -5,7 +5,6 @@ set -e
 DOTFILES_DIR=$(cd "$(dirname "$0")/.." && pwd)
 
 step() { printf "\n\033[1;32m==> %s\033[0m\n" "$1"; }
-warn() { printf "\033[1;33mwarning:\033[0m %s\n" "$1"; }
 
 if [[ $# -ne 1 ]]; then
     echo "Usage: setup.sh <machine-name>"
@@ -91,14 +90,12 @@ defaults write com.apple.systemsound "com.apple.sound.uiaudio.enabled" -int 0
 defaults write com.apple.controlcenter "NSStatusItem Visible Sound" -bool true
 killall ControlCenter
 
-# Finder sidebar
+step "Configuring Finder sidebar"
 mysides remove Recents
 mysides remove Shared
 mysides remove Documents
 mysides add "$(whoami)" "file:///Users/$(whoami)/"
 mysides add workspace "file:///Users/$(whoami)/workspace/"
-
-echo "Done. Some changes require logging out to take effect."
 
 # --- SSH key ---
 
@@ -114,15 +111,15 @@ cat <<'EOF'
   Remaining manual steps:
 ============================================
 
-  1. Sign in to work account
-  2. Sign in to iCloud
-  3. Keyboard: remove Cmd-Shift-A and Cmd-Shift-M shortcuts
+  1. Keyboard: remove Cmd-Shift-A and Cmd-Shift-M shortcuts
      (System Settings > Keyboard > Keyboard Shortcuts)
-  4. Paste SSH public key (already in clipboard) into GitHub: https://github.com/settings/keys
-  5. JetBrains settings:
+  2. Paste SSH public key (already in clipboard) into GitHub: https://github.com/settings/keys
+  3. JetBrains settings:
        - Editor font size 15
        - Tab limit 4
        - Disable parameter name hints
        - Remove status bar and navigation bar
+
+  Some system preference changes require logging out to take effect.
 
 EOF
