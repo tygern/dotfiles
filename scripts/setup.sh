@@ -91,6 +91,9 @@ osascript -e 'tell application "Terminal"
     set font size of settings set "Basic" to 15
 end tell'
 
+# Desktop: hide widgets
+defaults write com.apple.WindowManager StandardHideWidgets -int 1
+
 # Menu bar: show Sound in Control Center
 defaults write com.apple.controlcenter "NSStatusItem Visible Sound" -bool true
 killall ControlCenter
