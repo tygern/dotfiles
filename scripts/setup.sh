@@ -87,9 +87,11 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 15
 defaults write com.apple.systemsound "com.apple.sound.uiaudio.enabled" -int 0
 
 # Terminal: use Basic theme as default, font size 15
-defaults write com.apple.Terminal "Default Window Settings" -string "Basic"
-defaults write com.apple.Terminal "Startup Window Settings" -string "Basic"
-osascript -e 'tell application "Terminal" to set font size of settings set "Basic" to 15'
+osascript -e 'tell application "Terminal"
+    set default settings to settings set "Basic"
+    set startup settings to settings set "Basic"
+    set font size of settings set "Basic" to 15
+end tell'
 
 # Menu bar: show Sound in Control Center
 defaults write com.apple.controlcenter "NSStatusItem Visible Sound" -bool true
