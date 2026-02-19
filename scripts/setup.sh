@@ -40,8 +40,6 @@ brew bundle --file "$DOTFILES_DIR/Brewfile"
 step "Copying dotfiles"
 mkdir -p ~/workspace
 cp "$DOTFILES_DIR/config/.zshrc" ~/.zshrc
-mkdir -p ~/Library/Application\ Support/com.mitchellh.ghostty
-cp "$DOTFILES_DIR/config/ghostty.config" ~/Library/Application\ Support/com.mitchellh.ghostty/config
 mkdir -p ~/Library/Application\ Support/Rectangle
 cp "$DOTFILES_DIR/config/RectangleConfig.json" ~/Library/Application\ Support/Rectangle/RectangleConfig.json
 mkdir -p ~/.config/zed
@@ -85,6 +83,11 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
 # Sound: disable UI sound effects
 defaults write com.apple.systemsound "com.apple.sound.uiaudio.enabled" -int 0
+
+# Terminal: use Basic theme as default, font size 15
+defaults write com.apple.Terminal "Default Window Settings" -string "Basic"
+defaults write com.apple.Terminal "Startup Window Settings" -string "Basic"
+osascript -e 'tell application "Terminal" to set font size of settings set "Basic" to 15'
 
 # Menu bar: show Sound in Control Center
 defaults write com.apple.controlcenter "NSStatusItem Visible Sound" -bool true
