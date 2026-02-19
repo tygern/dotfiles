@@ -48,7 +48,9 @@ cp "$DOTFILES_DIR/config/zed-settings.json" ~/.config/zed/settings.json
 # --- /etc/paths ---
 
 step "Adding ~/bin to /etc/paths"
-echo "$HOME/bin" | sudo tee -a /etc/paths
+if ! grep -qxF "$HOME/bin" /etc/paths; then
+    echo "$HOME/bin" | sudo tee -a /etc/paths
+fi
 
 # --- System preferences ---
 
@@ -97,13 +99,19 @@ step "Configuring Finder sidebar"
 mysides remove Recents
 mysides remove Shared
 mysides remove Documents
-mysides add "$(whoami)" "file:///Users/$(whoami)/"
-mysides add workspace "file:///Users/$(whoami)/workspace/"
+if ! mysides list | grep -q "^$(whoami)"; then
+    mysides add "$(whoami)" "file:///Users/$(whoami)/"
+fi
+if ! mysides list | grep -q "^workspace"; then
+    mysides add workspace "file:///Users/$(whoami)/workspace/"
+fi
 
 # --- SSH key ---
 
 step "Generating SSH key"
-ssh-keygen -q -N "" -f ~/.ssh/id_rsa
+if [[ ! -f ~/.ssh/id_rsa ]]; then
+    ssh-keygen -q -N "" -f ~/.ssh/id_rsa
+fi
 pbcopy < ~/.ssh/id_rsa.pub
 
 # --- Manual steps ---
