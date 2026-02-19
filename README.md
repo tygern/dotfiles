@@ -4,8 +4,14 @@
 
 1. Sign in to work account
 1. Sign in to iCloud
-1. Install command line tools: `xcode-select --install`
+1. Install command line tools
+   ```shell
+   xcode-select --install
+   ```
 1. Install [Homebrew](https://brew.sh/)
+   ```shell
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
 1. Clone this repo
    ```shell
    mkdir -p ~/workspace/dotfiles
