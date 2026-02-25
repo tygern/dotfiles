@@ -18,7 +18,7 @@ fi
 # --- Homebrew packages ---
 
 step "Installing Homebrew packages"
-brew install gh cloudflared claude-code
+brew install cloudflared claude-code
 
 # --- Dotfiles ---
 
