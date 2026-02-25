@@ -52,12 +52,10 @@ cat <<'EOF'
 
   1. Set up a cloudflared tunnel:
      https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/
-  2. Allow cloudflared to run as a service:
-     (System Settings > General > Login Items & Extensions)
-  3. Enable Screen Sharing:
-     (System Settings > General > Sharing > Screen Sharing)
-  4. Enable Remote Login (SSH):
+  2. Enable Screen Sharing via Remote Management:
+     (System Settings > General > Sharing > Remote Management)
+  3. Enable Remote Login (SSH):
      (System Settings > General > Sharing > Remote Login)
-  5. Open Docker to complete installation
+  4. Open Docker to complete installation
 
 EOF
