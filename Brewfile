@@ -5,6 +5,7 @@ brew "watch"
 brew "tree"
 brew "jq"
 brew "tmux"
+brew "gh"
 
 cask "keepingyouawake"
 cask "jetbrains-toolbox"
