@@ -30,3 +30,13 @@ The script will prompt for your password when needed.
 ## After running the script
 
 Follow the remaining manual steps printed by the script.
+
+## Headless setup
+
+For headless machines, run the headless script after the main setup:
+
+```shell
+./scripts/headless.sh
+```
+
+Follow the remaining manual steps printed by the script.
