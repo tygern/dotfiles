@@ -18,7 +18,7 @@ fi
 # --- Homebrew packages ---
 
 step "Installing Homebrew packages"
-brew install cloudflared claude-code
+brew bundle --file "$DOTFILES_DIR/Brewfile.headless"
 
 # --- Dotfiles ---
 
