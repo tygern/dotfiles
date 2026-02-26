@@ -45,6 +45,7 @@ cp "$DOTFILES_DIR/config/RectangleConfig.json" ~/Library/Application\ Support/Re
 mkdir -p ~/.config/zed
 cp "$DOTFILES_DIR/config/zed-settings.json" ~/.config/zed/settings.json
 cp "$DOTFILES_DIR/config/ghw.zsh" ~/.config/ghw.zsh
+cp "$DOTFILES_DIR/config/doc.zsh" ~/.config/doc.zsh
 
 # --- /etc/paths ---
 

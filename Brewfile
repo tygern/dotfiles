@@ -6,6 +6,8 @@ brew "tree"
 brew "jq"
 brew "tmux"
 brew "gh"
+brew "pandoc"
+brew "texlive"
 
 cask "keepingyouawake"
 cask "jetbrains-toolbox"

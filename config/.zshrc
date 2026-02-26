@@ -27,3 +27,4 @@ jdk() {
 jdk 23 > /dev/null 2>&1
 
 source ~/.config/ghw.zsh
+source ~/.config/doc.zsh
