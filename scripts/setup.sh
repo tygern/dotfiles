@@ -38,7 +38,6 @@ brew bundle --file "$DOTFILES_DIR/Brewfile"
 # --- Dotfiles ---
 
 step "Copying dotfiles"
-mkdir -p ~/workspace
 cp "$DOTFILES_DIR/config/.zshrc" ~/.zshrc
 cp "$DOTFILES_DIR/config/.tmux.conf" ~/.tmux.conf
 mkdir -p ~/Library/Application\ Support/Rectangle
