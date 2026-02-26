@@ -40,6 +40,7 @@ brew bundle --file "$DOTFILES_DIR/Brewfile"
 step "Copying dotfiles"
 mkdir -p ~/workspace
 cp "$DOTFILES_DIR/config/.zshrc" ~/.zshrc
+cp "$DOTFILES_DIR/config/.tmux.conf" ~/.tmux.conf
 mkdir -p ~/Library/Application\ Support/Rectangle
 cp "$DOTFILES_DIR/config/RectangleConfig.json" ~/Library/Application\ Support/Rectangle/RectangleConfig.json
 mkdir -p ~/.config/zed

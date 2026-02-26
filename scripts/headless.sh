@@ -23,7 +23,7 @@ brew install cloudflared claude-code
 # --- Dotfiles ---
 
 step "Copying dotfiles"
-cp "$DOTFILES_DIR/config/.tmux.conf" ~/.tmux.conf
+cp "$DOTFILES_DIR/config/.tmux-headless.conf" ~/.tmux.conf
 
 # --- Power management ---
 
