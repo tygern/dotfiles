@@ -86,12 +86,14 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 15
 # Sound: disable UI sound effects
 defaults write com.apple.systemsound "com.apple.sound.uiaudio.enabled" -int 0
 
-# Terminal: use Basic theme as default, font size 15
+# Terminal: use Basic theme as default, font size 15, smooth resize
 osascript -e 'tell application "Terminal"
     set default settings to settings set "Basic"
     set startup settings to settings set "Basic"
     set font size of settings set "Basic" to 15
 end tell'
+/usr/libexec/PlistBuddy -c "Add :'Window Settings':Basic:EnableSmoothResizing bool true" ~/Library/Preferences/com.apple.Terminal.plist 2>/dev/null \
+    || /usr/libexec/PlistBuddy -c "Set :'Window Settings':Basic:EnableSmoothResizing true" ~/Library/Preferences/com.apple.Terminal.plist
 
 # Desktop: hide widgets
 defaults write com.apple.WindowManager StandardHideWidgets -int 1
