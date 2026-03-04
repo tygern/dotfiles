@@ -1,2 +1,3 @@
 brew "cloudflared"
 brew "claude-code"
+brew "htop"
