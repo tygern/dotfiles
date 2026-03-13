@@ -40,6 +40,8 @@ brew bundle --file "$DOTFILES_DIR/Brewfile"
 step "Copying dotfiles"
 cp "$DOTFILES_DIR/config/.zshrc" ~/.zshrc
 cp "$DOTFILES_DIR/config/.tmux.conf" ~/.tmux.conf
+mkdir -p ~/Library/Application\ Support/com.mitchellh.ghostty
+cp "$DOTFILES_DIR/config/ghostty.config" ~/Library/Application\ Support/com.mitchellh.ghostty/config
 mkdir -p ~/Library/Application\ Support/Rectangle
 cp "$DOTFILES_DIR/config/RectangleConfig.json" ~/Library/Application\ Support/Rectangle/RectangleConfig.json
 mkdir -p ~/.config/zed
@@ -85,17 +87,6 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
 # Sound: disable UI sound effects
 defaults write com.apple.systemsound "com.apple.sound.uiaudio.enabled" -int 0
-
-# Terminal: use Basic theme as default, font size 15, smooth resize, option as meta
-osascript -e 'tell application "Terminal"
-    set default settings to settings set "Basic"
-    set startup settings to settings set "Basic"
-    set font size of settings set "Basic" to 15
-end tell'
-/usr/libexec/PlistBuddy -c "Add :'Window Settings':Basic:EnableSmoothResizing bool true" ~/Library/Preferences/com.apple.Terminal.plist 2>/dev/null \
-    || /usr/libexec/PlistBuddy -c "Set :'Window Settings':Basic:EnableSmoothResizing true" ~/Library/Preferences/com.apple.Terminal.plist
-/usr/libexec/PlistBuddy -c "Add :'Window Settings':Basic:useOptionAsMetaKey bool true" ~/Library/Preferences/com.apple.Terminal.plist 2>/dev/null \
-    || /usr/libexec/PlistBuddy -c "Set :'Window Settings':Basic:useOptionAsMetaKey true" ~/Library/Preferences/com.apple.Terminal.plist
 
 # Desktop: hide widgets
 defaults write com.apple.WindowManager StandardHideWidgets -int 1

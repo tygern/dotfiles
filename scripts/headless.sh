@@ -56,6 +56,6 @@ cat <<'EOF'
      (System Settings > General > Sharing > Remote Management)
   3. Enable Remote Login (SSH):
      (System Settings > General > Sharing > Remote Login)
-  4. Open Docker to complete installation
+  4. Open Docker and Ghostty to complete installation
 
 EOF
