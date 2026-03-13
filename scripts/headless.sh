@@ -19,6 +19,7 @@ fi
 
 step "Installing Homebrew packages"
 brew bundle --file "$DOTFILES_DIR/Brewfile.headless"
+brew bundle check --file "$DOTFILES_DIR/Brewfile.headless"
 
 # --- Dotfiles ---
 
