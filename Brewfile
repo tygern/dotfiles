@@ -8,6 +8,7 @@ brew "tmux"
 brew "gh"
 brew "pandoc"
 brew "texlive"
+brew "openjdk@23"
 
 cask "keepingyouawake"
 cask "jetbrains-toolbox"

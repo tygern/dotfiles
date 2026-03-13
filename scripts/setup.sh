@@ -34,6 +34,7 @@ echo "Machine name set to: $NEW_NAME"
 step "Installing Homebrew packages"
 brew analytics off
 brew bundle --file "$DOTFILES_DIR/Brewfile"
+brew bundle check --file "$DOTFILES_DIR/Brewfile"
 
 # --- Dotfiles ---
 

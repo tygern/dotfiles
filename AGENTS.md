@@ -22,7 +22,7 @@ This repo automates macOS setup for a new machine. The main files are:
 
 - **System preferences:** Use `defaults write` for most settings. Many require a logout to take effect.
 - **Dock management:** Use `dockutil` (in Brewfile). Finder and Trash are permanent dock items — do not try to add them, only add other items.
-- **Terminal settings:** Use AppleScript (`osascript`) rather than `defaults write` — more reliable when Terminal is running.
+- **Ghostty settings:** Config file is at `~/Library/Application Support/com.mitchellh.ghostty/config`, copied from `config/ghostty.config`.
 - **Finder sidebar:** `mysides` is deprecated and disabled in Homebrew (as of Oct 2025). This step is manual.
 - **Widget/Control Center settings:** stored in `com.apple.WindowManager` and `com.apple.controlcenter`.
 
