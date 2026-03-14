@@ -23,6 +23,7 @@ doc() {
 
   local extra_args=()
   [[ "$fmt" == "epub" ]] && extra_args+=("--epub-title-page=false")
+  [[ "$fmt" == "pdf" ]] && extra_args+=("--pdf-engine=xelatex")
 
   pbpaste | pandoc -f markdown "${extra_args[@]}" -o "$1.$fmt"
 }
