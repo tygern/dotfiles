@@ -24,7 +24,9 @@ jdk() {
   java -version
 }
 
-jdk 23 > /dev/null 2>&1
+# Add your default JDK version
+# jdk 23 > /dev/null 2>&1
 
 source ~/.config/ghw.zsh
 source ~/.config/doc.zsh
+source ~/.config/book.zsh
