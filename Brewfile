@@ -9,6 +9,7 @@ brew "gh"
 brew "pandoc"
 brew "texlive"
 brew "openjdk"
+brew "claude-code@latest"
 
 cask "keepingyouawake"
 cask "jetbrains-toolbox"
