@@ -1,6 +1,6 @@
 # Download a YouTube video as audio and import it into Apple Books
 #
-# Usage: ./book.zsh <youtube-url>
+# Usage: book <youtube-url>
 #
 # Prerequisites:
 #   - yt-dlp:  brew install yt-dlp
@@ -8,7 +8,9 @@
 #
 
 book() {
-# --- Check prerequisites ---
+    local cmd URL WORKDIR DOWNLOADED FILENAME EXTENSION BASENAME M4B_PATH AAC_PATH
+
+    # --- Check prerequisites ---
     for cmd in yt-dlp ffmpeg afconvert; do
         if ! command -v "$cmd" &>/dev/null; then
             echo "Error: '$cmd' is not installed."
@@ -17,19 +19,21 @@ book() {
             else
                 echo "  Install it with: brew install $cmd"
             fi
-            exit 1
+            return 1
         fi
     done
-    
+
     # --- Validate input ---
     if [[ $# -lt 1 ]]; then
-        echo "Usage: $0 <youtube-url>"
-        exit 1
+        echo "Usage: book <youtube-url>"
+        return 1
     fi
-    
+
     URL="$1"
-    TMPDIR=$(mktemp -d)
-    trap 'rm -rf "$TMPDIR"' EXIT
+    WORKDIR=$(mktemp -d)
+    # Expand the path now: zsh runs a function's EXIT trap in the caller's
+    # environment, where the local WORKDIR is already out of scope.
+    trap "rm -rf ${(q)WORKDIR}" EXIT
     
     echo "==> Downloading audio from YouTube..."
     
@@ -37,16 +41,16 @@ book() {
     # Falls back to best available format if m4a isn't available.
     yt-dlp \
         -f "bestaudio[ext=m4a]/bestaudio" \
-        -o "$TMPDIR/%(title)s.%(ext)s" \
+        -o "$WORKDIR/%(title)s.%(ext)s" \
         --no-playlist \
         "$URL"
-    
+
     # Find the downloaded file (there should be exactly one)
-    DOWNLOADED=$(find "$TMPDIR" -type f | head -1)
-    
+    DOWNLOADED=$(find "$WORKDIR" -type f | head -1)
+
     if [[ -z "$DOWNLOADED" ]]; then
         echo "Error: Download failed — no file found."
-        exit 1
+        return 1
     fi
     
     FILENAME=$(basename "$DOWNLOADED")
@@ -56,8 +60,8 @@ book() {
     echo "==> Downloaded: $FILENAME"
     
     # --- Convert to m4b (audiobook format for Apple Books) ---
-    M4B_PATH="$TMPDIR/${BASENAME}.m4b"
-    
+    M4B_PATH="$WORKDIR/${BASENAME}.m4b"
+
     if [[ "$EXTENSION" == "m4a" ]]; then
         # m4a and m4b are identical formats, just rename
         echo "==> File is already AAC (m4a). Renaming to m4b..."
@@ -65,20 +69,20 @@ book() {
     elif [[ "$EXTENSION" == "mp3" || "$EXTENSION" == "opus" || "$EXTENSION" == "webm" || "$EXTENSION" == "ogg" ]]; then
         # Use afconvert (built into macOS) to convert to AAC, then rename to m4b
         echo "==> Converting $EXTENSION to m4b using afconvert..."
-        AAC_PATH="$TMPDIR/${BASENAME}.m4a"
+        AAC_PATH="$WORKDIR/${BASENAME}.m4a"
         afconvert "$DOWNLOADED" "$AAC_PATH" -d aac -f m4af
         mv "$AAC_PATH" "$M4B_PATH"
     else
         # Try afconvert anyway — it supports many input formats
         echo "==> Attempting to convert $EXTENSION to m4b..."
-        AAC_PATH="$TMPDIR/${BASENAME}.m4a"
+        AAC_PATH="$WORKDIR/${BASENAME}.m4a"
         afconvert "$DOWNLOADED" "$AAC_PATH" -d aac -f m4af
         mv "$AAC_PATH" "$M4B_PATH"
     fi
-    
+
     if [[ ! -f "$M4B_PATH" ]]; then
         echo "Error: Conversion failed."
-        exit 1
+        return 1
     fi
     
     echo "==> Importing into Apple Books..."
